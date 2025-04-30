@@ -27,7 +27,9 @@ export class NavbarComponent {
     }
 
     refreshMovieDetails(mId:any){
-        window.location.pathname = `/movieDetails/${mId}`;
+        this._Router.navigate([`/movieDetails/${mId}`]).then(() => {
+            window.location.reload();
+        });
     }
 
 }
