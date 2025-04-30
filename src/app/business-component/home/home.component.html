@@ -1,0 +1,84 @@
+
+<div class="container mt-5">
+    <!-- Slider -->
+    <div class="row mb-5">
+        <h2 class="fw-bold text-center mb-5">Upcoming <span class="text-danger">Movies</span></h2>
+        <app-main-slider></app-main-slider>
+    </div>
+    <!-- Slider -->
+
+    <div class="row mx-auto">
+
+        <div class="col-md-4 col-sm-10 pb-5">
+            <div class="brdr w-25"></div>
+
+            <h3 class="py-3">Trending <br> <span class="text-danger">Movies</span> <br> To Watch Now </h3>
+            <p class="py-2">Most watched <span class="text-danger">Movies</span> by days</p>
+
+            <div class="brdr"></div>
+        </div>
+
+        <div class="col-md-2 col-sm-10 position-relative my-3" *ngFor="let movie of trendingMovies">
+            <div class="poster">
+                <a routerLink="/movieDetails/{{movie.id}}">
+                    <img class="w-100" [src]="imgSrc+movie?.poster_path">
+                </a>
+            </div>
+            <h6 class="pt-2">{{movie.title}}{{movie.name}}</h6>
+
+            <div [class]="movie.vote_average >= 5? 'bg-info rate':'bg-danger rate'">{{movie.vote_average.toFixed(1)}}</div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row mx-auto">
+
+        <div class="col-md-4 col-sm-10 pb-5">
+            <div class="brdr w-25"></div>
+
+            <h3 class="py-3">Trending <br> <span class="text-danger">TV</span> <br> To Watch Now </h3>
+            <p class="py-2">Most watched <span class="text-danger">TV</span> by days</p>
+
+            <div class="brdr"></div>
+        </div>
+
+        <div class="col-md-2 col-sm-10 my-4 position-relative" *ngFor="let movie of trendingTv">
+            <div class="poster">
+                <a routerLink="/tvDetails/{{movie.id}}">
+                    <img class="w-100" [src]="imgSrc+movie?.poster_path">
+                </a>
+            </div>
+            <h6 class="pt-2">{{movie.title}}{{movie.name}}</h6>
+
+            <div [class]="movie.vote_average >= 5? 'bg-info rate':'bg-danger rate'" >{{movie.vote_average.toFixed(1)}}</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row mx-auto">
+
+        <div class="col-md-4 col-sm-10 pb-5">
+            <div class="brdr w-25"></div>
+
+            <h3 class="py-3">Trending <br> <span class="text-danger">People</span> <br> To Watch Now </h3>
+            <p class="py-2">Most watched <span class="text-danger">People</span> by days</p>
+
+            <div class="brdr"></div>
+        </div>
+
+        <div class="col-md-2 col-sm-10 my-4 position-relative" *ngFor="let person of trendingPeople">
+            <div class="poster">
+                <img class="w-100 h" [src]="person.profile_path">
+            </div>
+            <h6 class="pt-2">{{person.name}}</h6>
+
+            <div [class]="person.popularity >= 1? 'bg-info rate':'bg-danger rate'" >{{person.popularity.toFixed(1)}}</div>
+        </div>
+
+    </div>
+</div>

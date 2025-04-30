@@ -1,0 +1,12 @@
+img{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+img:hover{
+    transform:rotate(360deg);
+    filter: grayscale(100%);
+    transition: all 0.3s ease-in-out;
+}
+.item{
+    overflow: hidden !important;
+}

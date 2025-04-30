@@ -1,0 +1,73 @@
+.aLink
+{
+    color: rgb(246, 43, 83) !important;
+    font-weight:900 !important;
+    font-size: medium;
+    letter-spacing: 1px !important;
+}
+a
+{
+    cursor: pointer;
+    color: #fff !important;
+}
+li a::after
+{
+    content: '';
+    display: block;
+    width: 0%;
+    height: 3px;
+    background: #fff;
+    transition: width .3s ease;
+    -webkit-transition: width .3s ease;
+    -moz-transition: width .3s ease;
+    -ms-transition: width .3s ease;
+    -o-transition: width .3s ease;
+}
+li a:hover::after
+{
+    width: 50%;
+}
+li.nav-item{
+    display: inline-flex;
+    align-items: center;
+}
+input::placeholder{
+    color: #000 !important;
+    font-size: medium !important;
+    letter-spacing: 1px !important;
+    opacity: 0.6 !important;
+}
+.modal-body input{
+    color: #000 !important;
+}
+
+.iconStyle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: #F8F9FA 1px solid;
+    border-radius: 50%;
+    margin: 0 8px;
+    cursor: pointer !important;
+    transition: all 0.2s ease-in-out;
+}
+.iconStyle:hover{
+    transform: scale(1.1);
+}
+.mSImg{
+    width: 50px;
+    height: 50px;
+}
+.mItem{
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.mItem:hover{
+    background-color: #000;
+    transform: scale(1.02);
+}
+.mItem:hover p{
+    color: #fff !important;
+}

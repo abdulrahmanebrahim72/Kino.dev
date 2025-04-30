@@ -1,0 +1,55 @@
+<div class="container-fluid my-4 bg-opacity-100" style="background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(https://image.tmdb.org/t/p/w500/{{tv?.backdrop_path}}); background-size: cover; background-position: center center;">
+    <div class="row p-3 ">
+        <div class="col-md-3 col-sm-12  position-relative">
+            <img *ngIf="tv?.poster_path != null" src="https://image.tmdb.org/t/p/w500/{{tv?.poster_path}}" class="w-100 rounded-1" >
+            <img *ngIf="tv?.poster_path == null" src="../../../assets/nf.jpg" class="w-100 rounded-1" >
+            <div class="my-2">
+                <a class="btn btn-danger w-100" target="_blank" href="{{tv?.homepage}}">Watching page</a>
+            </div>
+            <div [class]="tv?.vote_average >= 5? 'bg-info rate rounded-1 p-2':'bg-danger rate'">{{tv?.vote_average.toFixed(1)}}</div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <h1 class="text-center text-capitalize my-2 fw-bold fst-italic">
+                {{tv?.name}} ({{tv?.first_air_date.split("-")[0]}})
+            </h1>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">
+                    First Air Date : <span class="text-light fw-normal">{{tv?.first_air_date}}</span>
+                </p>
+                
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">
+                    Last Air Date : <span class="text-light fw-normal">{{tv?.last_air_date}}</span>
+                </p>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Overview :</p>
+                <p class="mb-3">{{tv?.overview}}</p>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">
+                    Number Of Seasons : <span class="text-light fw-normal">{{tv?.number_of_seasons}}</span>
+                </p>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Genres :</p>
+                <div class="d-flex">
+                    <p *ngFor="let mg of tv?.genres" class="me-3">{{mg.name}}</p>
+                </div>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Production Companies :</p>
+                <div class="d-flex">
+                    <p *ngFor="let pc of tv?.production_companies" class="me-3">{{pc.name}}</p>
+                </div>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Production Countries :</p>
+                <div class="d-flex">
+                    <p *ngFor="let pc of tv?.production_countries" class="me-3">{{pc.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

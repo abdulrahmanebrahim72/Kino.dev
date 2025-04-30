@@ -1,0 +1,48 @@
+<div class="container mb-4">
+    <h1 class="text-center mt-5 mb-5"><span class="text-danger fw-bold">Trending</span> By Day</h1>
+    <div class="row">
+        <div *ngFor="let movie of trendingMovies | paginate: { id: 'trendingPaginate',
+                                                    itemsPerPage: 20,
+                                                    currentPage: curentPage,
+                                                    totalItems: total } " class="col-md-2 mt-3" >
+            <figure>
+                <div class="item position-relative">
+                    <div [class]="movie?.vote_average >= 5? 'bg-info rate':'bg-danger rate'" >
+                        {{movie?.vote_average.toFixed(1)}}
+                    </div>
+                    @if (movie?.media_type == "movie") {
+                        <a routerLink="/movieDetails/{{movie.id}}">
+                            <img class="w-100" [src]="imgSrc+movie?.poster_path">
+                        </a>
+                    }
+                    @else if (movie?.media_type == "tv") {
+                        <a routerLink="/tvDetails/{{movie.id}}">
+                            <img class="w-100" [src]="imgSrc+movie?.poster_path">
+                        </a>
+                    } @else {<img class="w-100" [src]="imgSrc+movie?.poster_path">}
+                </div>
+                <figcaption>
+                    <h6 class="text-center p-1">{{movie?.title}}{{movie?.name}}</h6>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center my-5 text-light">
+        <pagination-controls  id="trendingPaginate"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="5"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
+    </div>
+
+</div>
+

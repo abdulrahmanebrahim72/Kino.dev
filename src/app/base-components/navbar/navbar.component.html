@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <h1 class="navbar-brand fs-2 fw-bold text-light border border-2 px-2 rounded-1" >
+        <img src="../../assets/icon.png" width="35" height="35" class="bg-light rounded-circle"> Kino
+      </h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse px-3 justify-content-between" id="navbarSupportedContent">
+
+        <ul class="navbar-nav  mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="'aLink'" routerLink="/home" >Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="'aLink'" routerLink="/trending" >Trending</a>
+          </li>
+
+          <li class="nav-item mx-1">
+            <div class="dropdown">
+              <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                TV <i class="fa-solid fa-caret-down text-light"></i>
+              </a>
+            
+              <ul class="dropdown-menu bg-transparent">
+                <li><a class="dropdown-item bg-dark" routerLink="/tv/airing_today" >Airing Today</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/tv/on_the_air" >On The Air</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/tv/popular" >Popular</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/tv/top_rated" >Top Rated</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item mx-1">
+            <div class="dropdown">
+              <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Movies <i class="fa-solid fa-caret-down text-light"></i>
+              </a>
+            
+              <ul class="dropdown-menu bg-transparent">
+                <li><a class="dropdown-item bg-dark" routerLink="/movies/now_playing" >Now Playing</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/movies/top_rated" >Top Rated</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/movies/popular" >Popular</a></li>
+                <li><a class="dropdown-item bg-dark" routerLink="/movies/upcoming" >UpComing</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLinkActive]="'aLink'" routerLink="/about" >About</a>
+          </li>
+        </ul>
+
+        <!-- Search bar -->
+        <div class="w-50">
+          <!-- Button trigger modal -->
+          <input data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" value="SEARCH" class="form-control rounded-5 my-2">
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <input [(ngModel)]="searchValue" (keyup)="movieSearch()" type="text" class="form-control rounded-5 my-2" placeholder="Search for a movie">
+                  
+                  <div *ngIf="result.length>0" class="moviesResults mt-3">
+                    <div *ngFor="let movie of result">
+                      <a routerLink="/movieDetails/{{movie?.id}}" (click)="refreshMovieDetails(movie?.id)" data-bs-dismiss="modal" class="mItem d-flex align-items-center border border-2 my-1 text-decoration-none">
+                        <img [src]="imgSrc+movie?.poster_path" class="mSImg me-1">
+                        <p class="text-dark m-0 fw-semibold">{{movie?.title}}</p>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div *ngIf="result.length<1">
+                    <h5 class="text-danger text-center mt-3 fw-bolder">No similar search results.</h5>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center  pb-2">
+          <span class="iconStyle"><a href="https://www.facebook.com/profile.php?id=100086215770680" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i></a></span>
+          <span class="iconStyle"><a href="#" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a></span>
+          <span class="iconStyle"><a href="https://github.com/abdulrahmanebrahim72?fbclid=IwY2xjawJ8YmhleHRuA2FlbQIxMABicmlkETFSTnlxVU9VSkJrQnVkWDFrAR6BEIfLorPZOjJVPIX7ootip3DUwLz8VSq6sEwUUOuqqfWErJDlLkW9-453lw_aem_5oSebWD7vIbUFi5k0ZL2JQ" target="_blank"><i class="fab fa-github" aria-hidden="true"></i></a></span>
+          <span class="iconStyle"><a href="https://www.linkedin.com/in/abdulrahman-ebrahim-b06880333/" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></span>
+          <span class="iconStyle"><a href="https://www.instagram.com/abdulrahman_alsawy/?fbclid=IwY2xjawJ8YdtleHRuA2FlbQIxMABicmlkETFSTnlxVU9VSkJrQnVkWDFrAR6BEIfLorPZOjJVPIX7ootip3DUwLz8VSq6sEwUUOuqqfWErJDlLkW9-453lw_aem_5oSebWD7vIbUFi5k0ZL2JQ#" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></span>
+        </div>
+        
+      </div>
+    </div>
+  </nav>

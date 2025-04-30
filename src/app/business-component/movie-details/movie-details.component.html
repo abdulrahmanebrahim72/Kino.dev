@@ -1,0 +1,44 @@
+<div class="container-fluid my-4 bg-opacity-100" style="background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(https://image.tmdb.org/t/p/w500/{{movie?.backdrop_path}}); background-size: cover; background-position: center center;">
+    <div class="row p-3 ">
+        <div class="col-md-3 col-sm-12  position-relative">
+            <img *ngIf="movie?.poster_path != null" src="https://image.tmdb.org/t/p/w500/{{movie?.poster_path}}" class="w-100 rounded-1" alt="">
+            <img *ngIf="movie?.poster_path == null" src="../../../assets/nf.jpg" class="w-100 rounded-1" alt="">
+            <div class="my-2">
+                <a class="btn btn-danger w-100" target="_blank" href="{{movie?.homepage}}">Watching page</a>
+            </div>
+            <div [class]="movie?.vote_average >= 5? 'bg-info rate rounded-1 p-2':'bg-danger rate'">{{movie?.vote_average.toFixed(1)}}</div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <h1 class="text-center text-capitalize my-2 fw-bold fst-italic">
+                {{movie?.title}} ({{movie?.release_date.split("-")[0]}})
+            </h1>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">
+                    Release Date : <span class="text-light fw-normal">{{movie?.release_date}}</span>
+                </p>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Overview :</p>
+                <p class="mb-3">{{movie?.overview}}</p>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Genres :</p>
+                <div class="d-flex">
+                    <p *ngFor="let mg of movie?.genres" class="me-3">{{mg.name}}</p>
+                </div>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Production Companies :</p>
+                <div class="d-flex">
+                    <p *ngFor="let pc of movie?.production_companies" class="me-3">{{pc.name}}</p>
+                </div>
+            </div>
+            <div>
+                <p class="border-bottom border-3 border-danger py-1 fw-bold text-danger head">Production Countries :</p>
+                <div class="d-flex">
+                    <p *ngFor="let pc of movie?.production_countries" class="me-3">{{pc.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
